@@ -10,7 +10,7 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'Blog',
-  domain: 'nextjs-notion-starter-kit.transitivebullsh.it',
+  domain: 'blog-cr.vercel.app',
   author: 'Changran He',
 
   // open graph metadata (optional)
