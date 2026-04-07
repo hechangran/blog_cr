@@ -2,24 +2,41 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
+<<<<<<< Updated upstream
   rootNotionPageId: 'c4035021d340448681f37a0aa2dbac34',
+=======
+  rootNotionPageId: '0e046dfaf0e84f5ab0a77cd4897d345a',
+>>>>>>> Stashed changes
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
+<<<<<<< Updated upstream
   name: 'Blog',
   domain: 'blog-cr.vercel.app',
   author: 'Changran He',
 
   // open graph metadata (optional)
   description: 'Personal blog',
+=======
+  name: 'Log @ Notion',
+  domain: 'crhe.vercel.app',
+  author: 'crhe',
+
+  // open graph metadata (optional)
+  description: 'Log',
+>>>>>>> Stashed changes
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
   github: 'hechangran',
+<<<<<<< Updated upstream
   // linkedin: 'fisch2',
+=======
+  linkedin: 'crhe',
+>>>>>>> Stashed changes
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
