@@ -16,6 +16,7 @@ import 'styles/prism-theme.css'
 import type { AppProps } from 'next/app'
 import * as Fathom from 'fathom-client'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
 import { posthog } from 'posthog-js'
 import * as React from 'react'
 
@@ -61,5 +62,22 @@ export default function App({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Script
+        src='https://www.googletagmanager.com/gtag/js?id=G-SP9BZ1J5L6'
+        strategy='afterInteractive'
+      />
+      <Script id='google-analytics' strategy='afterInteractive'>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SP9BZ1J5L6');
+        `}
+      </Script>
+
+      <Component {...pageProps} />
+    </>
+  )
 }
