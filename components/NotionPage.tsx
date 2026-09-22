@@ -25,6 +25,7 @@ import * as config from '@/lib/config'
 import { mapImageUrl } from '@/lib/map-image-url'
 import { getCanonicalPageUrl, mapPageUrl } from '@/lib/map-page-url'
 import { searchNotion } from '@/lib/search-notion'
+import { prepareAcademicHome } from '@/lib/prepare-academic-home'
 import { useDarkMode } from '@/lib/use-dark-mode'
 
 import { Footer } from './Footer'
@@ -223,6 +224,16 @@ export function NotionPage({
     return site ? mapPageUrl(site, recordMap!, searchParams) : undefined
   }, [site, recordMap, lite])
 
+  const isAcademicHome =
+    pageId?.replaceAll('-', '') === site?.rootNotionPageId?.replaceAll('-', '')
+  const displayRecordMap = React.useMemo(
+    () =>
+      isAcademicHome && recordMap && site
+        ? prepareAcademicHome(recordMap, site.rootNotionPageId)
+        : recordMap,
+    [isAcademicHome, recordMap, site]
+  )
+
   const keys = Object.keys(recordMap?.block || {})
   const block = getBlockValue(recordMap?.block?.[keys[0]!])
 
@@ -304,11 +315,11 @@ export function NotionPage({
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
-          pageId === site.rootNotionPageId && 'index-page'
+          isAcademicHome && 'index-page academic-home'
         )}
         darkMode={isDarkMode}
         components={notionRendererComponents}
-        recordMap={recordMap}
+        recordMap={displayRecordMap!}
         rootPageId={site.rootNotionPageId}
         rootDomain={site.domain}
         fullPage={!isLiteMode}

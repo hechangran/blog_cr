@@ -1,0 +1,283 @@
+/* Academic profile theme. Notion remains the source of all biographical text. */
+.notion {
+  --notion-max-width: 800px;
+  --notion-header-height: 76px;
+  --academic-accent: #245a7b;
+  --academic-muted: #66737f;
+  --academic-rule: #e3e9ee;
+  --fg-color: #27323c;
+  --bg-color: #fff;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.notion.dark-mode,
+.dark-mode .notion {
+  --academic-accent: #90c5e7;
+  --academic-muted: #a8b5c2;
+  --academic-rule: #35424f;
+  --fg-color: #e6edf3;
+  --bg-color: #18212a;
+}
+
+.notion-frame {
+  background: var(--bg-color);
+}
+.notion-page {
+  line-height: 1.75;
+}
+.academic-home {
+  --notion-max-width: 800px;
+}
+.notion-full-page {
+  width: min(100%, 864px);
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 56px !important;
+}
+
+.notion-page-cover-wrapper,
+.notion-page-cover-wrapper span,
+.notion-page-cover-wrapper img,
+.notion-page-cover {
+  height: 170px !important;
+  min-height: 170px !important;
+  max-height: 170px !important;
+  max-width: 960px !important;
+  border-radius: 10px;
+}
+.notion-page-cover-wrapper {
+  width: calc(100% - 48px);
+  margin: 24px auto 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+.notion-page-cover-wrapper img {
+  object-fit: cover;
+}
+.notion-page-has-cover.notion-page-no-icon {
+  padding-top: 42px;
+}
+.notion-title {
+  text-align: left;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.notion-h {
+  margin: 36px 0 12px;
+  padding: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+.notion-header-anchor {
+  scroll-margin-top: 110px;
+}
+.notion-text {
+  padding: 5px 0;
+}
+.notion-list {
+  padding-left: 23px;
+}
+.notion-list li {
+  padding: 4px 0;
+}
+.notion-link {
+  color: var(--academic-accent);
+  border-bottom: 1px solid transparent;
+  background: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.notion-link:hover,
+.notion-link:focus {
+  background: none;
+  border-bottom-color: currentColor;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--academic-accent, #245a7b);
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+.academic-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--bg-color) !important;
+  backdrop-filter: none;
+  border-bottom: 1px solid var(--academic-rule);
+  height: auto;
+  min-height: var(--notion-header-height);
+}
+.academic-header .notion-nav-header {
+  width: 100%;
+  max-width: 1024px;
+  min-height: 76px;
+  padding: 0 32px;
+  display: flex;
+  gap: 24px;
+  overflow: visible;
+}
+.academic-brand {
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  margin-right: auto;
+}
+.academic-nav {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+}
+.academic-nav-link {
+  padding: 9px 0;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--academic-muted);
+}
+.academic-nav-link:hover,
+.academic-nav-link[aria-current='page'] {
+  color: var(--academic-accent);
+}
+.academic-header-actions {
+  display: flex;
+  align-items: center;
+}
+.academic-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid var(--academic-rule);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--academic-muted);
+  cursor: pointer;
+}
+.academic-theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Contact heading stays in the document for navigation and screen readers. */
+.academic-home .notion-block-d2416af857db4c069ccd7d9f7fad80a5 {
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.academic-home .notion-block-ea305000000040008000000000000001 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 16px 0 25px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--academic-rule);
+  font-size: 15px;
+}
+.academic-home .notion-page-link {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 6px 0;
+  color: var(--academic-accent);
+  font-size: 16px;
+}
+.academic-home .notion-page-link:hover {
+  background: none;
+  text-decoration: underline;
+}
+.academic-home .notion-page-link .notion-page-icon-inline {
+  display: none;
+}
+.academic-home .notion-page-title-text {
+  border-bottom: none;
+}
+.notion footer {
+  width: calc(100% - 64px);
+  max-width: 800px;
+  border-top: 1px solid var(--academic-rule);
+  padding: 20px 0;
+  color: var(--academic-muted);
+}
+.notion footer a {
+  font-size: 20px;
+}
+
+@media (max-width: 640px) {
+  .notion {
+    --notion-header-height: 112px;
+    font-size: 16px;
+  }
+  .academic-header .notion-nav-header {
+    padding: 12px 22px 8px;
+    gap: 8px 16px;
+    flex-wrap: wrap;
+    min-height: 112px;
+  }
+  .academic-brand {
+    order: 0;
+  }
+  .academic-header-actions {
+    order: 1;
+  }
+  .academic-nav {
+    flex-wrap: wrap;
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .academic-nav-link {
+    font-size: 14px;
+  }
+  .notion-full-page,
+  .index-page.notion-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .notion-page-cover-wrapper {
+    width: calc(100% - 32px);
+    margin-top: 16px;
+  }
+  .notion-page-cover-wrapper,
+  .notion-page-cover-wrapper span,
+  .notion-page-cover-wrapper img,
+  .notion-page-cover {
+    height: 110px !important;
+    min-height: 110px !important;
+    max-height: 110px !important;
+  }
+  .notion-page-has-cover.notion-page-no-icon {
+    padding-top: 30px;
+  }
+  .notion-header-anchor {
+    scroll-margin-top: 140px;
+  }
+  .notion-title {
+    margin-bottom: 16px;
+  }
+  .notion-h {
+    margin-top: 30px;
+  }
+  .notion footer {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notion * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

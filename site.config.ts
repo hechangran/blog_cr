@@ -9,12 +9,13 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Log @ Notion',
+  name: 'Changran He',
   domain: 'crhe.vercel.app',
-  author: 'crhe',
+  author: 'Changran He',
 
   // open graph metadata (optional)
-  description: 'Log',
+  description:
+    'Changran He | Cooperative control, output regulation and their applications. South China University of Technology.',
 
   // social usernames (optional)
   // twitter: 'transitive_bs',
@@ -50,17 +51,12 @@ export default siteConfig({
 
   // whether to use the default notion navigation style or a custom one with links to
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
-  navigationStyle: 'default',
+  navigationStyle: 'custom',
+  navigationLinks: [
+    { title: 'Research', url: '/#3d46c77827a14414bbbbb2a83db20f0c' },
+    { title: 'Publications', pageId: '4850c6aadc234f9e89029e6c0951dbea' },
+    { title: '招生信息', pageId: '3591c6caa59f80d492e5dc275fd36490' },
+    { title: 'Contact', url: '/#d2416af857db4c069ccd7d9f7fad80a5' }
+  ],
   isSearchEnabled: false
-  // navigationStyle: 'custom',
-  // navigationLinks: [
-  //   {
-  //     title: 'About',
-  //     pageId: 'f1199d37579b41cbabfc0b5174f4256a'
-  //   },
-  //   {
-  //     title: 'Contact',
-  //     pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
-  //   }
-  // ]
 })
