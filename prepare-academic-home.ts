@@ -88,7 +88,7 @@ export function prepareAcademicHome(
       : /ORCID/i.test(text)
         ? 'ORCID'
         : undefined
-    if (email) contactLinks.push([email, [['a', `mailto:${email}`]]])
+    if (email) contactLinks.push([email.replace('@', ' [at] ')])
     else if (label && link)
       contactLinks.push([label, [['a', link[1] as string]]])
     else allContactsRecognised = false
