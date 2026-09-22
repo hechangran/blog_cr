@@ -88,7 +88,7 @@ export function prepareAcademicHome(
       : /ORCID/i.test(text)
         ? 'ORCID'
         : undefined
-    if (email) contactLinks.push(['Email', [['a', `mailto:${email}`]]])
+    if (email) contactLinks.push([email.replace('@', ' [at] ')])
     else if (label && link)
       contactLinks.push([label, [['a', link[1] as string]]])
     else allContactsRecognised = false
@@ -125,7 +125,7 @@ export function prepareAcademicHome(
           make('2', 'header', [['Publications']]),
           make('3', 'text', [
             [
-              'Browse the full publication list, including journal articles and conference papers.'
+              'Browse the publication list, including journal articles and conference papers.'
             ]
           ]),
           publications
