@@ -37,6 +37,8 @@ export function prepareAcademicHome(
   const navigation: string[] = []
   let current = intro
   for (const id of root.content) {
+    // Keep the image record for Footer, but omit it from the page body.
+    if (id === '3e41c6ca-a59f-8041-8dde-ce76d8744564') continue
     const block = read(id)
     if (!block) {
       current.push(id)
