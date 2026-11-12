@@ -109,17 +109,56 @@ export function prepareAcademicHome(
     : contact
 
   const research = [
-    ...(groups.get('research interests') ?? []),
-    ...(groups.get('research') ?? [])
+    ...(groups.get('research') ?? []),
+    ...(groups.get('research interests') ?? [])
   ]
+  // Pages can live in Navigation or directly below the Research heading.
+  const researchPages = [...new Set([...navigation, ...research])]
+  const pageNamed = (name: string) =>
+    researchPages.find(
+      (id) =>
+        read(id)?.type === 'page' &&
+        title(id).replaceAll(/\s+/g, ' ').toLowerCase() === name
+    )
+  const projects =
+    pageNamed('research projects') ?? pageNamed('researach projects')
+  const experience = pageNamed('research experience')
+  const researchLinks = [projects, experience].filter(
+    (id): id is string => id !== undefined
+  )
+  if (projects) {
+    const block = read(projects)!
+    write({
+      ...block,
+      properties: { ...block.properties, title: [['Research Projects']] }
+    } as Block)
+  }
+  const researchBody = research.filter((id) => {
+    if (researchLinks.includes(id)) return false
+    const block = read(id)
+    if (block?.type !== 'header') return true
+    const name = title(id).toLowerCase()
+    if (name === 'research') return false
+    if (name === 'research interests') {
+      write({
+        ...block,
+        type: 'text',
+        properties: {
+          ...block.properties,
+          title: [['Research Interests', [['b']]]]
+        }
+      } as Block)
+    }
+    return true
+  })
+  const researchContent =
+    research.length || researchLinks.length
+      ? [make('6', 'header', [['Research']]), ...researchBody, ...researchLinks]
+      : []
   const publications = navigation.find(
     (id) => title(id).toLowerCase() === 'publications'
   )
   const admissions = navigation.find((id) => title(id) === '招生信息')
-  const experience = navigation.find(
-    (id) =>
-      title(id).replace(/\s+/g, ' ').toLowerCase() === 'research experience'
-  )
   const publicationsContent =
     groups.get('publications') ??
     (publications
@@ -160,13 +199,12 @@ export function prepareAcademicHome(
     .filter(([name]) => !preferred.has(name))
     .flatMap(([, ids]) => ids)
   const otherNavigation = navigation.filter(
-    (id) => ![publications, admissions, experience].includes(id)
+    (id) => ![publications, admissions, ...researchLinks].includes(id)
   )
   const content = [
     ...intro,
     ...contactContent,
-    ...research,
-    ...(experience ? [experience] : []),
+    ...researchContent,
     ...publicationsContent,
     ...admissionsContent,
     ...(groups.get('education') ?? []),

@@ -53,7 +53,7 @@ export default siteConfig({
   // important pages. To use `navigationLinks`, set `navigationStyle` to `custom`.
   navigationStyle: 'custom',
   navigationLinks: [
-    { title: 'Research', url: '/#3d46c77827a14414bbbbb2a83db20f0c' },
+    { title: 'Research', url: '/#ea305000000040008000000000000006' },
     { title: 'Publications', pageId: '4850c6aadc234f9e89029e6c0951dbea' },
     { title: '招生信息', pageId: '3591c6caa59f80d492e5dc275fd36490' },
     { title: 'Contact', url: '/#d2416af857db4c069ccd7d9f7fad80a5' }
