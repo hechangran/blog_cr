@@ -191,7 +191,7 @@ button:focus-visible {
   max-width: 100%;
   padding: 6px 0;
   color: var(--academic-accent);
-  font-size: 16px;
+  font-size: 17px;
 }
 .academic-home .notion-page-link:hover {
   background: none;
