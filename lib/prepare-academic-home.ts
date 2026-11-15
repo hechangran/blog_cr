@@ -136,6 +136,36 @@ export function prepareAcademicHome(
   const researchBody = research.filter((id) => {
     if (researchLinks.includes(id)) return false
     const block = read(id)
+    if (block?.type === 'image') {
+      const imageSource = block.properties?.source?.[0]?.[0] ?? ''
+      if (
+        /manipulator_(?:comparison|feedforward_comparison)\.gif(?:[?#]|$)/i.test(
+          imageSource
+        )
+      ) {
+        write({
+          ...block,
+          format: {
+            ...block.format,
+            block_width: 760,
+            block_full_width: false,
+            block_page_width: false
+          },
+          properties: {
+            ...block.properties,
+            // An authored Notion caption takes precedence over this default.
+            caption: block.properties?.caption?.length
+              ? block.properties.caption
+              : [
+                  ['Adaptive disturbance rejection. ', [['b']]],
+                  [
+                    'A two-joint manipulator with feedforward compensation switched off (red) and on (blue). With the same feedback controller and disturbances, observer-based compensation reduces the joint tracking error.'
+                  ]
+                ]
+          }
+        } as Block)
+      }
+    }
     if (block?.type !== 'header') return true
     const name = title(id).toLowerCase()
     if (name === 'research') return false

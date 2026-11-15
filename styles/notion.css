@@ -38,6 +38,31 @@
   margin-bottom: 1em;
 }
 
+/* The research demonstration only. Keep other Notion media unchanged. */
+.academic-home .notion-asset-wrapper-image:has(img[src*="manipulator_comparison.gif"]),
+.academic-home .notion-asset-wrapper-image:has(img[src*="manipulator_feedforward_comparison.gif"]) {
+  width: min(100%, 760px) !important;
+  max-width: 100%;
+  margin: 1.5rem auto 2rem;
+}
+
+.academic-home .notion-asset-wrapper-image img[src*="manipulator_comparison.gif"],
+.academic-home .notion-asset-wrapper-image img[src*="manipulator_feedforward_comparison.gif"] {
+  box-sizing: border-box;
+  border: 1px solid rgba(127, 127, 127, 0.22);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.academic-home .notion-asset-wrapper-image:has(img[src*="manipulator_comparison.gif"]) .notion-asset-caption,
+.academic-home .notion-asset-wrapper-image:has(img[src*="manipulator_feedforward_comparison.gif"]) .notion-asset-caption {
+  padding: 0.85rem 0.25rem 0;
+  color: var(--fg-color-2);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  text-align: left;
+}
+
 .notion-asset-wrapper-video > div,
 .notion-asset-wrapper-video video {
   width: 100% !important;
