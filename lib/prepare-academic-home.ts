@@ -159,7 +159,7 @@ export function prepareAcademicHome(
               : [
                   ['Adaptive disturbance rejection. ', [['b']]],
                   [
-                    'A two-joint manipulator with feedforward compensation switched off (red) and on (blue). With the same feedback controller and disturbances, observer-based compensation reduces the joint tracking error.'
+                    'A two-flexible-joint manipulator with feedforward compensation off (red) and on (blue). Observer-based compensation significantly reduces joint tracking errors by learning and compensating for unknown disturbances.'
                   ]
                 ]
           }
