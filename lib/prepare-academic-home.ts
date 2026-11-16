@@ -133,13 +133,14 @@ export function prepareAcademicHome(
       properties: { ...block.properties, title: [['Research Projects']] }
     } as Block)
   }
+  const researchMedia: string[] = []
   const researchBody = research.filter((id) => {
     if (researchLinks.includes(id)) return false
     const block = read(id)
-    if (block?.type === 'image') {
+    if (block?.type === 'image' || block?.type === 'video') {
       const imageSource = block.properties?.source?.[0]?.[0] ?? ''
       if (
-        /manipulator_(?:comparison|feedforward_comparison)\.gif(?:[?#]|$)/i.test(
+        /manipulator_[^/?#]*\.(?:gif|mp4)(?:[?#]|$)/i.test(
           imageSource
         )
       ) {
@@ -164,6 +165,8 @@ export function prepareAcademicHome(
                 ]
           }
         } as Block)
+        researchMedia.push(id)
+        return false
       }
     }
     if (block?.type !== 'header') return true
@@ -183,7 +186,12 @@ export function prepareAcademicHome(
   })
   const researchContent =
     research.length || researchLinks.length
-      ? [make('6', 'header', [['Research']]), ...researchBody, ...researchLinks]
+      ? [
+          make('6', 'header', [['Research']]),
+          ...researchBody,
+          ...researchLinks,
+          ...researchMedia
+        ]
       : []
   const publications = navigation.find(
     (id) => title(id).toLowerCase() === 'publications'
