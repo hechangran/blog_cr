@@ -234,6 +234,38 @@ export function NotionPage({
     [isAcademicHome, recordMap, site]
   )
 
+  React.useEffect(() => {
+    if (!isAcademicHome || !displayRecordMap || error || router.isFallback) return
+
+    const configured = new WeakSet<HTMLVideoElement>()
+    const configureVideos = () => {
+      document
+        .querySelectorAll<HTMLVideoElement>(
+          '.academic-home .notion-asset-wrapper-video video'
+        )
+        .forEach((video) => {
+          if (configured.has(video)) return
+          configured.add(video)
+
+          // Mute before requesting autoplay; keep playback inline on mobile.
+          video.defaultMuted = true
+          video.muted = true
+          video.loop = true
+          video.autoplay = true
+          video.playsInline = true
+          void video.play().catch(() => {
+            // Keep the existing controls available if autoplay is blocked.
+          })
+        })
+    }
+
+    configureVideos()
+    // Notion can mount native video elements after the initial render.
+    const observer = new MutationObserver(configureVideos)
+    observer.observe(document.body, { childList: true, subtree: true })
+    return () => observer.disconnect()
+  }, [isAcademicHome, displayRecordMap, error, router.isFallback])
+
   const keys = Object.keys(recordMap?.block || {})
   const block = getBlockValue(recordMap?.block?.[keys[0]!])
 
